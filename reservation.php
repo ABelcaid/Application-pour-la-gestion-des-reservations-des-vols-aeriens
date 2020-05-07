@@ -1,3 +1,8 @@
+<?php
+include 'reservation-back.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +52,8 @@
 		</div>
 	</nav>
 
+
+	
 	<div class="flex">
 	<section class="t">
 		<div class="container py-3">
@@ -79,78 +86,83 @@
 				<div class="row">
 					<div class="col-md-7 col-md-offset-1">
 						<div class="booking-form">
-							<form>
+							<form action="reservation-back.php" method="POST">
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Nom</span>
-											<input class="form-control" type="text">
+											<input class="form-control" name="nom" type="text">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Prenom</span>
-											<input class="form-control" type="text">
+											<input class="form-control" name="prenom" type="text">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
-											<span class="form-label">Date de naissance</span>
-											<input class="form-control" type="date" required>
+											<span class="form-label">Age</span>
+											<input class="form-control" name="age" type="number" required>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<span class="form-label">Numéro de passeport </span>
-											<input class="form-control" type="text">
+											<span class="form-label">ID</span>
+											<input class="form-control" name="id" type="number" required>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<span class="form-label">Numéro de passeport </span>
-											<input class="form-control" type="text">
+											<span class="form-label">Pays </span>
+											<input class="form-control" name="pays" type="text">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<span class="form-label">Numéro de passeport </span>
-											<input class="form-control" type="text">
+											<span class="form-label">Adresse </span>
+											<input class="form-control" name="adresse" type="text">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<span class="form-label">Numéro de passeport </span>
-											<input class="form-control" type="text">
+											<span class="form-label">Numéro de telephone </span>
+											<input class="form-control" name="tele" type="number">
 										</div>
 									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<span class="form-label">Numéro de passeport </span>
-											<input class="form-control" type="text">
-										</div>
-									</div>
-								</div>
-								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Email </span>
-											<input class="form-control" type="email">
+											<input class="form-control" name="email" type="email">
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Numéro de passeport </span>
-											<input class="form-control" type="text">
+											<input class="form-control" name="passeport" type="number">
 										</div>
 									</div>
-
 								</div>
 								<div class="form-btn">
-									<button class="submit-btn">Réservation complète
-										 
+
+								<?php
+								$query= "SELECT * FROM passager";
+								$stmt =$conn->prepare($query);
+								$stmt->execute();
+								$result= $stmt->get_result();
+								$row = $result->fetch_assoc();
+
+								?>
+									
+									<button type="submit" name="add" class="submit-btn">
+										 <a style="color: #fff;;text-decoration: none;" class="abtn" href="confirmation.php?id=<?= $row['id'] ;?>">Réservation complète</a>
 									</button>
+
+							
+
+
 								</div>
 							</form>
 						</div>

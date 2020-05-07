@@ -236,8 +236,8 @@ ul.navbar-nav {
 .t{
 	/* border: 1px solid black; */
 	background: #fff;
-	margin: 2%;
-	padding: 2%;
+	margin: 10% 2% 1% 2%;
+    padding: 1%;
 }
 .plane{
 	width: 120px;
@@ -256,3 +256,7 @@ footer { padding: 40px 0 45px 0;background: #929292; }
 .footer-copyright a { color: #888; border-bottom: 1px dotted #888; }
 .footer-copyright a:hover, .footer-copyright a:focus { color: #888; border: 0; }
 
+.submit-btn .abtn{
+	text-decoration: none;
+	color: #f9fafb !important;
+}
