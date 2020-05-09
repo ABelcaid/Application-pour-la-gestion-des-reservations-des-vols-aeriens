@@ -64,14 +64,13 @@ include 'reservation-back.php';
 					</div>
 					<div class="col-md-8 px-3">
 						<div class="card-block px-3">
-							<h4 class="card-title">Lorem ipsum dolor sit amet</h4>
-							<p class="card-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-								et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-								laboris nisi ut aliquip ex ea commodo consequat. </p>
-							<p class="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-								dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-								culpa qui officia deserunt mollit anim id est laborum.</p>
-							<a href="#" class="btn btn-primary">Annuler le vol</a>
+							<h4 class="card-title">Depart :<span style="color:blue"><?= $vol_depart ;?></span></h4>
+							<h4 class="card-title">Destination : <span style="color:blue"><?= $vol_destination ;?></span></h4>
+							<h4 class="card-title">Date depart :<span style="color:blue"><?= $vol_date ;?></span> </h4>
+							<h4 class="card-title">Nomber de places : <span style="color:blue"><?= $vol_place ;?></span></h4>
+							<h4 class="card-title">Prix : <span style="color:blue"><?= $vol_prix ;?></span></h4>
+
+							<a href="index.php" class="btn btn-primary">Annuler le vol</a>
 						</div>
 					</div>
 
@@ -108,12 +107,7 @@ include 'reservation-back.php';
 											<input class="form-control" name="age" type="number" required>
 										</div>
 									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<span class="form-label">ID</span>
-											<input class="form-control" name="id" type="number" required>
-										</div>
-									</div>
+									
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Pays </span>

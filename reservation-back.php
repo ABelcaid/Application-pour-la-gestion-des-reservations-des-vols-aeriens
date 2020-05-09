@@ -1,30 +1,28 @@
 <?php
 include('dbconnection.php');
 
+if (isset($_GET['id'])) {
+    $id=$_GET['id'];
+   
 
-if(isset($_GET['ivd'])){
-    $id= $_GET['ivd'];
-    $query = "SELECT * FROM vlos WHERE id =?";
-    $stmt = $conn ->prepare($query);
+    $query= "SELECT * FROM vols WHERE id=?";
+    $stmt = $conn->prepare($query);
     $stmt->bind_param("i",$id);
     $stmt->execute();
     $result= $stmt->get_result();
     $row = $result->fetch_assoc();
-    
 
-    $volid =$row['id'];
-    $nom = $row['nom'];
-    $prenom = $row['prenom'];
-    $age = $row['age'];
-    $pays = $row['pays'];
-    $adresse = $row['adresse'];
-    $tele = $row['tele'];
-    $email = $row['email'];
-    $passeport = $row['num_passport'];
+    $vol_id = $row['id'];
+    $vol_depart = $row['depart'];
+    $vol_destination = $row['destination'];
+    $vol_date = $row['date_depart'];
+    $vol_place = $row['num_place'];
+    $vol_prix = $row['prix'];
 
-    echo $nom;
 
+    # code...
 }
+
 
 
 
@@ -46,8 +44,10 @@ $stmt = $conn->prepare("INSERT Into passager (vol_id, nom, prenom, age, pays, ad
 $stmt->bind_param("ississisi",$volid, $nom, $prenom, $age, $pays, $adresse, $tele, $email, $passeport);
 $stmt->execute();
 
-header('location:reservation.php');
+// header('location:reservation.php');
 // echo "your message has been sent successfully";
+
+
 $stmt->close();
 $conn->close();
 

@@ -20,6 +20,18 @@ create table vols
 );
 
 
+/*==============================================================*/
+/* Table: reservation                                          */
+/*==============================================================*/
+create table reservation
+(
+   id                    int not null,
+   vol_id                int,
+   passager_id           int,
+   primary key (id)
+);
+
+
 
 /*==============================================================*/
 /* Table: passager                                                */
@@ -27,7 +39,6 @@ create table vols
 create table passager
 (
    id                   int not null,
-   vol_id               int,
    nom                  varchar(254),
    prenom               varchar(254),
    age                  int,
@@ -42,8 +53,11 @@ create table passager
 
 
 
-alter table passager add constraint FK_Association_1 foreign key (vol_id)
+alter table reservation add constraint FK_Association_1 foreign key (vol_id)
       references vols (id) on delete restrict on update restrict;
+
+alter table reservation add constraint FK_Association_2 foreign key (passager_id)
+      references passager (id) on delete restrict on update restrict;
 
 
 
