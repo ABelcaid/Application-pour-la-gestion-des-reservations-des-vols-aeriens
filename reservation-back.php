@@ -28,8 +28,6 @@ if (isset($_GET['id'])) {
 
 
 if(isset($_POST['add'])){
-
-$volid = 1;
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $age = $_POST['age'];
@@ -39,22 +37,33 @@ $tele = $_POST['tele'];
 $email = $_POST['email'];
 $passeport = $_POST['passeport'];
 
-$stmt = $conn->prepare("INSERT Into passager (vol_id, nom, prenom, age, pays, adresse, tele, email, num_passport) values(?,?,?,?,?,?,?,?,?)");
+$stmt = $conn->prepare("INSERT Into passager (nom, prenom, age, pays, adresse, tele, email, num_passport) values(?,?,?,?,?,?,?,?)");
 
-$stmt->bind_param("ississisi",$volid, $nom, $prenom, $age, $pays, $adresse, $tele, $email, $passeport);
+$stmt->bind_param("ssissisi", $nom, $prenom, $age, $pays, $adresse, $tele, $email, $passeport);
 $stmt->execute();
+
+// $latest_id = $conn->lastInsertId();
 
 // header('location:reservation.php');
 // echo "your message has been sent successfully";
 
-
+// 
 $stmt->close();
-$conn->close();
+
+// $conn->close();
+
+
+$latest_id =  mysqli_insert_id($conn);
+$stmt = $conn->prepare("INSERT Into reservation (vol_id,passager_id) values(?,?)");
+$stmt->bind_param("ii",$GLOBALS['vol_id'],$latest_id );
+$stmt->execute();
+
+echo $latest_id;
+echo $GLOBALS['vol_id'];
+$stmt->close();
+
 
 }
-
-
-
 
 
 

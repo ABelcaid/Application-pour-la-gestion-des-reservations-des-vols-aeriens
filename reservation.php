@@ -66,9 +66,9 @@ include 'reservation-back.php';
 						<div class="card-block px-3">
 							<h4 class="card-title">Depart :<span style="color:blue"><?= $vol_depart ;?></span></h4>
 							<h4 class="card-title">Destination : <span style="color:blue"><?= $vol_destination ;?></span></h4>
-							<h4 class="card-title">Date depart :<span style="color:blue"><?= $vol_date ;?></span> </h4>
+							<h4 class="card-title">Date depart :<span style="color:blue"><?= $vol_date ;?> </span> </h4>
 							<h4 class="card-title">Nomber de places : <span style="color:blue"><?= $vol_place ;?></span></h4>
-							<h4 class="card-title">Prix : <span style="color:blue"><?= $vol_prix ;?></span></h4>
+							<h4 class="card-title">Prix : <span style="color:blue"><?= $vol_prix ;?> DH</span> </h4>
 
 							<a href="index.php" class="btn btn-primary">Annuler le vol</a>
 						</div>
@@ -151,7 +151,8 @@ include 'reservation-back.php';
 								?>
 									
 									<button type="submit" name="add" class="submit-btn">
-										 <a style="color: #fff;;text-decoration: none;" class="abtn" href="confirmation.php?id=<?= $row['id'] ;?>">Réservation complète</a>
+										addd
+										<!--  <a style="color: #fff;;text-decoration: none;" class="abtn" href="confirmation.php?pid=<?= $row['id'] ;?>">Réservation complète</a> -->
 									</button>
 
 							
