@@ -4,8 +4,6 @@ include('dbconnection.php');
 
 
 ?>
-
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,80 +15,90 @@ include('dbconnection.php');
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 
-	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
 
 
 
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button> -->
-				<!-- <a class="navbar-brand" href="index.html">Bootstrap Navbar Menu Template</a> -->
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="top-navbar-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Planifier</a></li>
-					<li><a href="#">Mes réservations</a></li>
-					<li><a href="#">S’inscrire</a></li>
-					<li><a href="#">Se connecter</a></li>
-					<li><a href="#">Faq</a></li>
-					<!-- <li><a class="btn btn-link-3" href="#">Button</a></li> -->
-				</ul>
-			</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">SKY FLIGHT</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Planifier</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Mes réservations
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">S’inscrire</a>
+						<a class="dropdown-item" href="#">Se connecter</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Faq</a>
+					</div>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
 		</div>
 	</nav>
 
 
-	
+
 	<div class="flex">
-	<section class="t">
-		<div class="container py-3">
-			<div class="card">
-				<div class="row ">
-					<div class="col-md-4">
-						<img class="plane" src="img/580b585b2edbce24c47b2d14.png" class="w-100">
-					</div>
-					<div class="col-md-8 px-3">
-						<div class="card-block px-3">
-
-
-						<?php
-						$id=$_GET['id'];
-						 $query= "SELECT * FROM vols WHERE id=?";
-						 $stmt = $conn->prepare($query);
-						 $stmt->bind_param("i",$id);
-						 $stmt->execute();
-						 $result= $stmt->get_result();
-						 $row = $result->fetch_assoc();
-						?>
-							<h4 class="card-title">Depart :<span style="color:blue"><?= $row['depart'] ;?></span></h4>
-							<h4 class="card-title">Destination : <span style="color:blue"><?= $row['destination'] ;?></span></h4>
-							<h4 class="card-title">Date depart :<span style="color:blue"><?= $row['date_depart']; ;?> </span> </h4>
-							<h4 class="card-title">Nomber de places : <span style="color:blue"><?= $row['num_place']; ;?></span></h4>
-							<h4 class="card-title">Prix : <span style="color:blue"><?= $row['prix'] ;?> DH</span> </h4>
-
-							<a href="index.php" class="btn btn-primary">Annuler le vol</a>
+		<section class="t">
+			<div class="container py-3">
+				<div class="card">
+					<div class="row ">
+						<div class="col-md-4">
+							<img class="plane" src="img/580b585b2edbce24c47b2d14.png" class="w-100">
 						</div>
-					</div>
+						<div class="col-md-8 px-3">
+							<div class="card-block px-3">
 
+
+								<?php
+								$id = $_GET['id'];
+								$query = "SELECT * FROM vols WHERE id=?";
+								$stmt = $conn->prepare($query);
+								$stmt->bind_param("i", $id);
+								$stmt->execute();
+								$result = $stmt->get_result();
+								$row = $result->fetch_assoc();
+								?>
+								<h4 class="card-title">Depart :<span style="color:blue"><?= $row['depart']; ?></span></h4>
+								<h4 class="card-title">Destination : <span style="color:blue"><?= $row['destination']; ?></span></h4>
+								<h4 class="card-title">Date depart :<span style="color:blue"><?= $row['date_depart'];; ?> </span> </h4>
+								<h4 class="card-title">Nomber de places : <span style="color:blue"><?= $row['num_place'];; ?></span></h4>
+								<h4 class="card-title">Prix : <span style="color:blue"><?= $row['prix']; ?> DH</span> </h4>
+
+								<a href="index.php" class="btn btn-primary">Annuler le vol</a>
+							</div>
+						</div>
+
+					</div>
 				</div>
 			</div>
-		</div>
-		</div>
+	</div>
 	</section>
 	<div id="booking" class="section">
 		<div class="section-center">
@@ -120,7 +128,7 @@ include('dbconnection.php');
 											<input class="form-control" name="age" type="number" required>
 										</div>
 									</div>
-									
+
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Pays </span>
@@ -154,14 +162,14 @@ include('dbconnection.php');
 								</div>
 								<div class="form-btn">
 
-								
-									
+
+
 									<button type="submit" name="add" class="submit-btn">
 										<!-- addd -->
-										 <a style="color: #fff;;text-decoration: none;" name="add" class="abtn" href="confirmation.php?pid=<?= $row['id'] ;?>">Réservation complète</a>
+										 <a style="color: #fff;;text-decoration: none;" name="add" class="abtn" href="confirmation.php?pid=<?= $row['id']; ?>">Réservation complète</a>
 									</button>
 
-							
+
 
 
 								</div>
@@ -175,37 +183,48 @@ include('dbconnection.php');
 
 
 	<?php
-								if(isset($_POST['add'])){
-								$nom = $_POST['nom'];
-								$prenom = $_POST['prenom'];
-								$age = $_POST['age'];
-								$pays = $_POST['pays'];
-								$adresse = $_POST['adresse'];
-								$tele = $_POST['tele'];
-								$email = $_POST['email'];
-								$passeport = $_POST['passeport'];
+	if (isset($_POST['add'])) {
+		$nom = $_POST['nom'];
+		$prenom = $_POST['prenom'];
+		$age = $_POST['age'];
+		$pays = $_POST['pays'];
+		$adresse = $_POST['adresse'];
+		$tele = $_POST['tele'];
+		$email = $_POST['email'];
+		$passeport = $_POST['passeport'];
 
-								$stmt = $conn->prepare("INSERT Into passager (nom, prenom, age, pays, adresse, tele, email, num_passport) values(?,?,?,?,?,?,?,?)");
-								$stmt->bind_param("ssissisi", $nom, $prenom, $age, $pays, $adresse, $tele, $email, $passeport);
-								$stmt->execute();
-								}
-								
-								
+		$stmt = $conn->prepare("INSERT Into passager (nom, prenom, age, pays, adresse, tele, email, num_passport) values(?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("ssissisi", $nom, $prenom, $age, $pays, $adresse, $tele, $email, $passeport);
+		$stmt->execute();
+	}
 
-								?>
 
+
+	?>
+
+	<div class="card text-center">
+		<div class="card-header">
+			Featured
+		</div>
+		<div class="card-body">
+			<h5 class="card-title">© 2020 Sky flight </h5>
+			<p class="card-text">All rights reserved</p>
+			<a href="index.php" class="btn btn-primary">Go HOME</a>
+		</div>
+		<div class="card-footer text-muted">
+			2 days ago
+		</div>
 	</div>
 
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 footer-copyright">
-					&copy; 2020 Sky flight All rights reserved
 
-				</div>
-			</div>
-		</div>
-	</footer>
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

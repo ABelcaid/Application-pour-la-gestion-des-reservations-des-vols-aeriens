@@ -3,28 +3,8 @@ body{
 
 }
 
-.navbar {
-	margin-bottom: 0;
-	padding-top: 10px;
-	background: none;
-	border: 0;
-	-moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
-	-o-transition: all .6s; -moz-transition: all .6s; -webkit-transition: all .6s; -ms-transition: all .6s; transition: all .6s;
-}
 
-ul.navbar-nav {
-	font-family: 'Josefin Sans', sans-serif;
-	font-size: 14px;
-	color: #fff;
-	font-weight: 400;
-	text-transform: uppercase;
-}
 
-.navbar-inverse ul.navbar-nav li a { color: #4fa3e3; font-size: larger; font-weight: bold; border: 0; }
-.navbar-inverse ul.navbar-nav li a:hover { color: #4fa3e3; border: 0; }
-.navbar-inverse ul.navbar-nav li a:focus { color: #4fa3e3; outline: 0; border: 0; }
-
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand { margin-left: 0; }
 
 
 
@@ -259,4 +239,19 @@ footer { padding: 40px 0 45px 0;background: #929292; }
 .submit-btn .abtn{
 	text-decoration: none;
 	color: #f9fafb !important;
+}
+.container {
+	padding: 2rem 0rem;
+}
+
+h4 {
+	margin: 2rem 0rem 1rem;
+}
+
+.table-image {
+
+	td,
+	th {
+		vertical-align: middle;
+	}
 }

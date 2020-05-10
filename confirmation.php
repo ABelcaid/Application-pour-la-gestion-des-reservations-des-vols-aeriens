@@ -13,66 +13,124 @@ include 'confirmation-back.php';
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
 
 
 
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button> -->
-                <!-- <a class="navbar-brand" href="index.html">Bootstrap Navbar Menu Template</a> -->
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="top-navbar-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Planifier</a></li>
-                    <li><a href="#">Mes réservations</a></li>
-                    <li><a href="#">S’inscrire</a></li>
-                    <li><a href="#">Se connecter</a></li>
-                    <li><a href="#">Faq</a></li>
-                    <!-- <li><a class="btn btn-link-3" href="#">Button</a></li> -->
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">SKY FLIGHT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Planifier</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mes réservations
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">S’inscrire</a>
+                        <a class="dropdown-item" href="#">Se connecter</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Faq</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
     </nav>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 mt-3 bg-info p-2 rounded">
-                <h2 class="bg-light p-2 rounded text-center text-dark">ID : <?= $row2['id']; ?></h2>
+                <h2 class="bg-light p-2 rounded text-center text-dark">Ticket N° : <?= $row2['id']; ?></h2>
                 <h4 class="text-light">Nom : <?= $row2['nom']; ?> </h4>
                 <h4 class="text-light">Prenom : <?= $row2['prenom'] ?> </h4>
                 <h4 class="text-light">Age : <?= $row2['age']; ?> </h4>
                 <h4 class="text-light">Pays : <?= $row2['pays'] ?> </h4>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 mt-3 bg-info p-2 rounded">
-                <h2 class="bg-light p-2 rounded text-center text-dark">ID : <?= $row1['id']; ?></h2>
-                <h4 class="text-light">depart : <?= $row1['depart']; ?> </h4>
-                <h4 class="text-light">destination : <?= $row1['destination'] ?> </h4>
-                <h4 class="text-light">date depart : <?= $row1['date_depart']; ?> </h4>
-                <h4 class="text-light">prix : <?= $row1['prix'] ?> </h4>
-            </div>
-        </div>
-    </div>
-    <button  name="submit" class="cherche-btn"><a href="index.php">click me </a></button>
+                <div class="col-md-6 mt-3 bg-info p-2 rounded">
+                    <h4 class="text-light">depart : <?= $row1['depart']; ?> </h4>
+                    <h4 class="text-light">destination : <?= $row1['destination'] ?> </h4>
+                    <h4 class="text-light">date depart : <?= $row1['date_depart']; ?> </h4>
+                    <h4 class="text-light">prix : <?= $row1['prix'] ?> </h4>
+                    <hr>
+                    <button type="button" class="btn btn-primary center-block" data-toggle="modal" data-target="#exampleModal">
+                        Confirmer
+                    </button>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are u sure ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger"><a href="index.php">Confirm </a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="blink" style="margin-top: 200px;"></div>
+
+
+
+
+    <div class="card text-center">
+        <div class="card-header">
+            Featured
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">© 2020 Sky flight </h5>
+            <p class="card-text">All rights reserved</p>
+            <a href="index.php" class="btn btn-primary">Go HOME</a>
+        </div>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+    </div>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 
 </body>
