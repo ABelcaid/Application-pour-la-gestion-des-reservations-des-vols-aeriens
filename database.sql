@@ -64,8 +64,8 @@ alter table reservation add constraint FK_Association_2 foreign key (passager_id
 /*==============================================================*/
 /* Inset data in vols Table                                           */
 /*==============================================================*/
-insert into vols
-values (2,"Agadir","Paris",'2020-05-26',200);
+-- insert into vols
+-- values (2,"Agadir","Paris",'2020-05-26',200);
 
 /*==============================================================*/
 /* Inset data in passager Table                                           */

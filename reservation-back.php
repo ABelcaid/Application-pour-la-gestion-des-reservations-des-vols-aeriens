@@ -1,9 +1,16 @@
+
 <?php
 include('dbconnection.php');
 
+// date_default_timezone_set('Africa/Casablanca');
+// $date = date('m/d/Y h:i:s a', time());
+
 if (isset($_GET['id'])) {
+    
     $id=$_GET['id'];
-   
+    // global $id ;
+    // $id = $_GET['id'];
+    // $GLOBALS['id'] = $_GET['id'];
 
     $query= "SELECT * FROM vols WHERE id=?";
     $stmt = $conn->prepare($query);
@@ -12,6 +19,7 @@ if (isset($_GET['id'])) {
     $result= $stmt->get_result();
     $row = $result->fetch_assoc();
 
+    
     $vol_id = $row['id'];
     $vol_depart = $row['depart'];
     $vol_destination = $row['destination'];
@@ -52,14 +60,18 @@ $stmt->close();
 
 // $conn->close();
 
+// $iid= var_dump($GLOBALS['id']);
 
+
+$date = date('Y-m-d H:i:s');
 $latest_id =  mysqli_insert_id($conn);
-$stmt = $conn->prepare("INSERT Into reservation (vol_id,passager_id) values(?,?)");
-$stmt->bind_param("ii",$GLOBALS['vol_id'],$latest_id );
+$stmt = $conn->prepare("INSERT Into reservation (vol_id,passager_id,date_reservation) values(?,?,?)");
+$stmt->bind_param("iis",$id,$latest_id,$date);
 $stmt->execute();
 
 echo $latest_id;
-echo $GLOBALS['vol_id'];
+// echo $GLOBALS['vol_id'];
+// echo $id;
 $stmt->close();
 
 
