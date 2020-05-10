@@ -63,7 +63,7 @@ include 'confirmation-back.php';
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 mt-3 bg-info p-2 rounded">
-                <h2 class="bg-light p-2 rounded text-center text-dark">ID : <?= $row1['id']; ?></h2>
+                <!-- <h2 class="bg-light p-2 rounded text-center text-dark">ID : <?= $row1['id']; ?></h2> -->
                 <h4 class="text-light">depart : <?= $row1['depart']; ?> </h4>
                 <h4 class="text-light">destination : <?= $row1['destination'] ?> </h4>
                 <h4 class="text-light">date depart : <?= $row1['date_depart']; ?> </h4>
