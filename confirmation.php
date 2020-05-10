@@ -52,15 +52,26 @@ include 'confirmation-back.php';
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 mt-3 bg-info p-2 rounded">
-                <h2 class="bg-light p-2 rounded text-center text-dark">ID : <?= $vid; ?></h2>
-                <h4 class="text-light">Nom : <?= $vdepart; ?> </h4>
-                <h4 class="text-light">Prenom : <?= $vdestination ?> </h4>
-                <h4 class="text-light">Age : <?= $vdate_depart; ?> </h4>
-                <h4 class="text-light">Pays : <?= $vprix ?> </h4>
+                <h2 class="bg-light p-2 rounded text-center text-dark">ID : <?= $row2['id']; ?></h2>
+                <h4 class="text-light">Nom : <?= $row2['nom']; ?> </h4>
+                <h4 class="text-light">Prenom : <?= $row2['prenom'] ?> </h4>
+                <h4 class="text-light">Age : <?= $row2['age']; ?> </h4>
+                <h4 class="text-light">Pays : <?= $row2['pays'] ?> </h4>
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-3 bg-info p-2 rounded">
+                <h2 class="bg-light p-2 rounded text-center text-dark">ID : <?= $row1['id']; ?></h2>
+                <h4 class="text-light">depart : <?= $row1['depart']; ?> </h4>
+                <h4 class="text-light">destination : <?= $row1['destination'] ?> </h4>
+                <h4 class="text-light">date depart : <?= $row1['date_depart']; ?> </h4>
+                <h4 class="text-light">prix : <?= $row1['prix'] ?> </h4>
+            </div>
+        </div>
+    </div>
+    <button  name="submit" class="cherche-btn"><a href="index.php">click me </a></button>
 
 
 

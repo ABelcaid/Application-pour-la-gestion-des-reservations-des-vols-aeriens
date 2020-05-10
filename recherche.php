@@ -132,7 +132,9 @@ include('dbconnection.php');
 															<td><?= $row['depart']; ?></td>
 															<td><?= $row['destination']; ?></td>
 															<td><?= $row['num_place']; ?></td>
-															<td><a href="confirmation.php?details=<?= $row['id']; ?>" class="badge badge-primary p-2">Details</a></td>
+															<!-- <td><a href="confirmation.php?details=<?= $row['id']; ?>" class="badge badge-primary p-2">Details</a></td> -->
+															<td><a href="reservation.php?id=<?= $row['id'] ;?>" class="badge badge-primary p-2">Details</a></td>
+
 														</tr>
 													<?php } ?>
 

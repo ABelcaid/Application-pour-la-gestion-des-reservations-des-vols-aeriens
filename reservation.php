@@ -1,5 +1,7 @@
 <?php
-include 'reservation-back.php';
+// include 'reservation-back.php';
+include('dbconnection.php');
+
 
 ?>
 
@@ -64,11 +66,22 @@ include 'reservation-back.php';
 					</div>
 					<div class="col-md-8 px-3">
 						<div class="card-block px-3">
-							<h4 class="card-title">Depart :<span style="color:blue"><?= $vol_depart ;?></span></h4>
-							<h4 class="card-title">Destination : <span style="color:blue"><?= $vol_destination ;?></span></h4>
-							<h4 class="card-title">Date depart :<span style="color:blue"><?= $vol_date ;?> </span> </h4>
-							<h4 class="card-title">Nomber de places : <span style="color:blue"><?= $vol_place ;?></span></h4>
-							<h4 class="card-title">Prix : <span style="color:blue"><?= $vol_prix ;?> DH</span> </h4>
+
+
+						<?php
+						$id=$_GET['id'];
+						 $query= "SELECT * FROM vols WHERE id=?";
+						 $stmt = $conn->prepare($query);
+						 $stmt->bind_param("i",$id);
+						 $stmt->execute();
+						 $result= $stmt->get_result();
+						 $row = $result->fetch_assoc();
+						?>
+							<h4 class="card-title">Depart :<span style="color:blue"><?= $row['depart'] ;?></span></h4>
+							<h4 class="card-title">Destination : <span style="color:blue"><?= $row['destination'] ;?></span></h4>
+							<h4 class="card-title">Date depart :<span style="color:blue"><?= $row['date_depart']; ;?> </span> </h4>
+							<h4 class="card-title">Nomber de places : <span style="color:blue"><?= $row['num_place']; ;?></span></h4>
+							<h4 class="card-title">Prix : <span style="color:blue"><?= $row['prix'] ;?> DH</span> </h4>
 
 							<a href="index.php" class="btn btn-primary">Annuler le vol</a>
 						</div>
@@ -85,7 +98,7 @@ include 'reservation-back.php';
 				<div class="row">
 					<div class="col-md-7 col-md-offset-1">
 						<div class="booking-form">
-							<form action="reservation-back.php" method="POST">
+							<form action="reservation.php" method="POST">
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
@@ -141,18 +154,11 @@ include 'reservation-back.php';
 								</div>
 								<div class="form-btn">
 
-								<?php
-								$query= "SELECT * FROM passager";
-								$stmt =$conn->prepare($query);
-								$stmt->execute();
-								$result= $stmt->get_result();
-								$row = $result->fetch_assoc();
-
-								?>
+								
 									
 									<button type="submit" name="add" class="submit-btn">
-										addd
-										<!--  <a style="color: #fff;;text-decoration: none;" class="abtn" href="confirmation.php?pid=<?= $row['id'] ;?>">Réservation complète</a> -->
+										<!-- addd -->
+										 <a style="color: #fff;;text-decoration: none;" name="add" class="abtn" href="confirmation.php?pid=<?= $row['id'] ;?>">Réservation complète</a>
 									</button>
 
 							
@@ -166,6 +172,27 @@ include 'reservation-back.php';
 			</div>
 		</div>
 	</div>
+
+
+	<?php
+								if(isset($_POST['add'])){
+								$nom = $_POST['nom'];
+								$prenom = $_POST['prenom'];
+								$age = $_POST['age'];
+								$pays = $_POST['pays'];
+								$adresse = $_POST['adresse'];
+								$tele = $_POST['tele'];
+								$email = $_POST['email'];
+								$passeport = $_POST['passeport'];
+
+								$stmt = $conn->prepare("INSERT Into passager (nom, prenom, age, pays, adresse, tele, email, num_passport) values(?,?,?,?,?,?,?,?)");
+								$stmt->bind_param("ssissisi", $nom, $prenom, $age, $pays, $adresse, $tele, $email, $passeport);
+								$stmt->execute();
+								}
+								
+								
+
+								?>
 
 	</div>
 
