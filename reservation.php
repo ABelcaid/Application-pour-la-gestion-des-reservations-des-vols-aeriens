@@ -106,7 +106,7 @@ include('dbconnection.php');
 				<div class="row">
 					<div class="col-md-7 col-md-offset-1">
 						<div class="booking-form">
-							<form action="reservation.php" method="POST">
+							<form action="reservation-back.php" method="POST">
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
@@ -159,14 +159,15 @@ include('dbconnection.php');
 											<input class="form-control" name="passeport" type="number">
 										</div>
 									</div>
+									<input type="hidden" id="custId" name="id" value="<?= $id ;?>">
 								</div>
 								<div class="form-btn">
 
 
 
 									<button type="submit" name="add" class="submit-btn">
-										<!-- addd -->
-										 <a style="color: #fff;;text-decoration: none;" name="add" class="abtn" href="confirmation.php?pid=<?= $row['id']; ?>">Réservation complète</a>
+										addd
+										<!--  <a style="color: #fff;;text-decoration: none;" name="add" class="abtn" href="confirmation.php?pid=<?= $row['id']; ?>">Réservation complète</a> -->
 									</button>
 
 
@@ -182,25 +183,7 @@ include('dbconnection.php');
 	</div>
 
 
-	<?php
-	if (isset($_POST['add'])) {
-		$nom = $_POST['nom'];
-		$prenom = $_POST['prenom'];
-		$age = $_POST['age'];
-		$pays = $_POST['pays'];
-		$adresse = $_POST['adresse'];
-		$tele = $_POST['tele'];
-		$email = $_POST['email'];
-		$passeport = $_POST['passeport'];
 
-		$stmt = $conn->prepare("INSERT Into passager (nom, prenom, age, pays, adresse, tele, email, num_passport) values(?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("ssissisi", $nom, $prenom, $age, $pays, $adresse, $tele, $email, $passeport);
-		$stmt->execute();
-	}
-
-
-
-	?>
 
 	<div class="card text-center">
 		<div class="card-header">

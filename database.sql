@@ -1,44 +1,31 @@
-
+DROP DATABASE gestion_reservations;
 CREATE DATABASE gestion_reservations;
 USE gestion_reservations;
 
-
-
-
-/*==============================================================*/
-/* Table: vols                                          */
-/*==============================================================*/
 create table vols
 (
-   id                       int not null,
+   id                       int PRIMARY KEY NOT NULL AUTO_INCREMENT,
    depart                   varchar(254),
    destination              varchar(254),
-   date_depart              date,
+   date_depart              datetime,
    num_place                int,
-   prix                     int,
-   primary key (id)
+   prix                     int
 );
 
 
-/*==============================================================*/
-/* Table: reservation                                          */
-/*==============================================================*/
 create table reservation
 (
-   id                    int not null,
+   id                    int PRIMARY KEY NOT NULL AUTO_INCREMENT, 
    vol_id                int,
    passager_id           int,
-   primary key (id)
+   date_reservation      timestamp
 );
 
 
 
-/*==============================================================*/
-/* Table: passager                                                */
-/*==============================================================*/
 create table passager
 (
-   id                   int not null,
+   id                   int PRIMARY KEY NOT NULL AUTO_INCREMENT, 
    nom                  varchar(254),
    prenom               varchar(254),
    age                  int,
@@ -46,8 +33,8 @@ create table passager
    adresse              varchar(254),
    tele                 int,
    email                varchar(254), 
-   num_passport         int,
-   primary key (id)
+   num_passport         int
+  
 );
 
 
@@ -61,15 +48,33 @@ alter table reservation add constraint FK_Association_2 foreign key (passager_id
 
 
 
-/*==============================================================*/
-/* Inset data in vols Table                                           */
-/*==============================================================*/
--- insert into vols
--- values (2,"Agadir","Paris",'2020-05-26',200);
+insert into vols(depart,destination,date_depart,num_place,prix)
+values ("Agadir","Paris",'2020-05-26 11:45:00',200,3000);
+insert into vols(depart,destination,date_depart,num_place,prix)
+values ("Marrakech","Paris",'2020-05-26 06:15:00',300,5000);
+insert into vols(depart,destination,date_depart,num_place,prix)
+values ("Agadir","Londres",'2020-05-26 20:45:00',250,4000);
+insert into vols(depart,destination,date_depart,num_place,prix)
+values ("Marrakech","Londres",'2020-05-26 11:30:00',150,3000);
+insert into vols(depart,destination,date_depart,num_place,prix)
+values ("Casablanca","Paris",'2020-05-26 00:50:00',250,2500);
+insert into vols(depart,destination,date_depart,num_place,prix)
+values ("Casablanca","Londres",'2020-05-26 05:00:00',200,5500);
 
-/*==============================================================*/
-/* Inset data in passager Table                                           */
-/*==============================================================*/
--- insert into passager
--- values (1,2,"Belcaid","Abderrahim",'1999-04-27',12345678,"belcaid@mail.me");
+use gestion_reservations;
+DELIMITER $$
+
+CREATE TRIGGER decrementer AFTER INSERT ON reservation
+FOR EACH ROW
+BEGIN
+    UPDATE vols
+        SET num_place=num_place - 1
+        WHERE vols.id = reservation.vol_id;
+END;$$
+
+DELIMITER ;
+
+
+
+
 
