@@ -76,6 +76,12 @@ include('dbconnection.php');
 						 $stmt->execute();
 						 $result= $stmt->get_result();
 						 $row = $result->fetch_assoc();
+
+						 $stmt = $conn->prepare("INSERT Into tmp (vid) values(?)");
+								$stmt->bind_param("i", $row['id']);
+								$stmt->execute();
+						 
+
 						?>
 							<h4 class="card-title">Depart :<span style="color:blue"><?= $row['depart'] ;?></span></h4>
 							<h4 class="card-title">Destination : <span style="color:blue"><?= $row['destination'] ;?></span></h4>
@@ -157,8 +163,8 @@ include('dbconnection.php');
 								
 									
 									<button type="submit" name="add" class="submit-btn">
-										<!-- addd -->
-										 <a style="color: #fff;;text-decoration: none;" name="add" class="abtn" href="confirmation.php?pid=<?= $row['id'] ;?>">Réservation complète</a>
+										addd
+										<!--  <a style="color: #fff;;text-decoration: none;"  class="abtn" href="confirmation.php?pid=<?= $id ;?>">Réservation complète</a> -->
 									</button>
 
 							
@@ -175,8 +181,9 @@ include('dbconnection.php');
 
 
 	<?php
-								if(isset($_POST['add'])){
-								$nom = $_POST['nom'];
+	if (isset($_POST['add']))
+    {   
+		$nom = $_POST['nom'];
 								$prenom = $_POST['prenom'];
 								$age = $_POST['age'];
 								$pays = $_POST['pays'];
@@ -188,8 +195,19 @@ include('dbconnection.php');
 								$stmt = $conn->prepare("INSERT Into passager (nom, prenom, age, pays, adresse, tele, email, num_passport) values(?,?,?,?,?,?,?,?)");
 								$stmt->bind_param("ssissisi", $nom, $prenom, $age, $pays, $adresse, $tele, $email, $passeport);
 								$stmt->execute();
-								}
+    ?>
+<script type="text/javascript">
+window.location = "confirmation.php";
+</script>      
+    <?php
+    }
+								// if(isset($_POST['add'])){
 								
+								// // header('Location: confirmation.php');
+
+
+								// }
+
 								
 
 								?>
