@@ -88,11 +88,11 @@ include 'confirmation-back.php';
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Are u sure ?
+                                Êtes-vous sûr ?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-danger"><a href="index.php">Confirm </a></button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                    <button type="button" class="btn btn-danger"><a href="index.php">Confirmer </a></button>
                                 </div>
                             </div>
                         </div>

@@ -87,7 +87,7 @@ include('dbconnection.php');
 								?>
 								<h4 class="card-title">Depart :<span style="color:blue"><?= $row['depart']; ?></span></h4>
 								<h4 class="card-title">Destination : <span style="color:blue"><?= $row['destination']; ?></span></h4>
-								<h4 class="card-title">Date depart :<span style="color:blue"><?= $row['date_depart']; ?> </span> </h4>
+								<h4 class="card-title">Date depart :<span style="color:blue"><?= $row['date_depart']; ?> PM </span> </h4>
 								<h4 class="card-title">Nomber de places : <span style="color:blue"><?= $row['num_place'];; ?></span></h4>
 								<h4 class="card-title">Prix : <span style="color:blue"><?= $row['prix']; ?> DH</span> </h4>
 
@@ -166,7 +166,7 @@ include('dbconnection.php');
 
 
 									<button type="submit" name="add" class="submit-btn">
-										addd
+									Réservation complète
 										<!--  <a style="color: #fff;;text-decoration: none;" name="add" class="abtn" href="confirmation.php?pid=<?= $row['id']; ?>">Réservation complète</a> -->
 									</button>
 
