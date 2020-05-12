@@ -36,7 +36,7 @@ include('dbconnection.php');
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Planifier</a>
@@ -54,8 +54,8 @@ include('dbconnection.php');
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				<input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
 			</form>
 		</div>
 	</nav>
@@ -88,19 +88,18 @@ include('dbconnection.php');
 
 
 	<div class="card text-center">
-		<div class="card-header">
-			Featured
-		</div>
-		<div class="card-body">
-			<h5 class="card-title">© 2020 Sky flight </h5>
-			<p class="card-text">All rights reserved</p>
-			<a href="index.php" class="btn btn-primary">Go HOME</a>
-		</div>
-		<div class="card-footer text-muted">
-			2 days ago
-		</div>
-	</div>
-
+        <div class="card-header">
+            Fonctionnalités
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">© 2020 Sky flight </h5>
+            <p class="card-text">Tous droits réservés </p>
+            <a href="index.php" class="btn btn-primary">Retour à l'accueil</a>
+        </div>
+        <div class="card-footer text-muted">
+            Il y a deux jours
+        </div>
+    </div>
 
 
 

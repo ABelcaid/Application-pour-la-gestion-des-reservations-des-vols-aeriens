@@ -38,7 +38,7 @@ include('dbconnection.php');
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Planifier</a>
@@ -56,8 +56,8 @@ include('dbconnection.php');
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				<input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
 			</form>
 		</div>
 	</nav>
@@ -66,7 +66,7 @@ include('dbconnection.php');
 
 	<div class="container text-center">
 		<form method="post" action="recherche">
-			<h1>Resultats des recerches</h1>
+			<h1>Resultats des recherches</h1>
 
 
 	</div>
@@ -94,12 +94,12 @@ include('dbconnection.php');
 				$villearrivee = $_POST['villearrivee'];
 
 
-				$query = "SELECT * from vols where depart='$villedepart' AND destination='$villearrivee'";
+				$query = "SELECT * from vols where depart='$villedepart' AND destination='$villearrivee' AND num_place > 0";
 				$stmt = $conn->prepare($query);
 				$stmt->execute();
 				$result = $stmt->get_result();
 				?>
-				<table class="table table-bordered">
+				<!-- <table class="table table-bordered">
 					<thead>
 						<tr>
 							<th scope="col">Date départ</th>
@@ -109,9 +109,25 @@ include('dbconnection.php');
 							<th scope="col">Reservation</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody> -->
 						<tr>
-							<?php while ($row = $result->fetch_assoc()) { ?>
+							<?php
+							$row_cnt = $result->num_rows; 
+							if($row_cnt <= 0)
+							echo " Aucun résultat trouvé";							
+							else{
+								echo"<table class='table table-bordered'>
+					<thead>
+						<tr>
+							<th scope='col'>Date départ</th>
+							<th scope='col'>Ville du départ</th>
+							<th scope='col'>Ville d'arrivée</th>
+							<th scope='col'>Nombre de Places</th>
+							<th scope='col'>Reservation</th>
+						</tr>
+					</thead>
+					<tbody>";
+							while ($row = $result->fetch_assoc()) { ?>
 								<td><?= $row['date_depart']; ?></td>
 								<td><?= $row['depart']; ?></td>
 								<td><?= $row['destination']; ?></td>
@@ -120,14 +136,14 @@ include('dbconnection.php');
 									<a class="btn btn-success" href="reservation.php?id=<?= $row['id']; ?>" type="button">Reserver</i></a>
 								</td>
 						</tr>
-					<?php } ?>
+					<?php }} ?>
 
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
-
+	
 
 
 

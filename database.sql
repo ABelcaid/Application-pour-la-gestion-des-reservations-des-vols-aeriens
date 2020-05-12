@@ -64,12 +64,14 @@ values ("Casablanca","Londres",'2020-05-26 05:00:00',200,5500);
 use gestion_reservations;
 DELIMITER $$
 
-CREATE TRIGGER decrementer AFTER INSERT ON reservation
+CREATE TRIGGER OR REPLACE decrementer AFTER INSERT ON reservation
 FOR EACH ROW
 BEGIN
+ DECLARE SELECTED INT;
+   set SELECTED=NEW.vol_id;
     UPDATE vols
         SET num_place=num_place - 1
-        WHERE vols.id = reservation.vol_id;
+        WHERE id = SELECTED;
 END;$$
 
 DELIMITER ;
