@@ -67,40 +67,39 @@ include 'confirmation-back.php';
                 <h4 class="text-light">Prenom : <?= $row2['prenom'] ?> </h4>
                 <h4 class="text-light">Age : <?= $row2['age']; ?> </h4>
                 <h4 class="text-light">Pays : <?= $row2['pays'] ?> </h4>
-                <div class="col-md-6 mt-3 bg-info p-2 rounded">
-                    <h4 class="text-light">depart : <?= $row1['depart']; ?> </h4>
-                    <h4 class="text-light">destination : <?= $row1['destination'] ?> </h4>
-                    <h4 class="text-light">date depart : <?= $row1['date_depart']; ?> </h4>
-                    <h4 class="text-light">prix : <?= $row1['prix'] ?> </h4>
-                    <hr>
-                    <button type="button" class="btn btn-primary center-block" data-toggle="modal" data-target="#exampleModal">
-                        Confirmer
-                    </button>
+                <h4 class="text-light">Depart : <?= $row1['depart']; ?> </h4>
+                <h4 class="text-light">Destination : <?= $row1['destination'] ?> </h4>
+                <h4 class="text-light">Date De Part : <?= $row1['date_depart']; ?> </h4>
+                <h4 class="text-light">Prix : <?= $row1['prix'] ?> </h4>
+                <hr>
+                <button type="button" class="btn bg-light p-2 rounded text-center text-dark" data-toggle="modal" data-target="#exampleModal">
+                    Confirmer
+                </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Are u sure ?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-danger"><a href="index.php">Confirm </a></button>
-                                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are u sure ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger"><a href="index.php">Confirm </a></button>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
+    </div>
     </div>
 
 
