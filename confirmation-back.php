@@ -1,13 +1,14 @@
 <?php
 include('dbconnection.php');
 
-
+$id = $_GET['id'];
   
-$query= "SELECT *  FROM reservation ORDER BY id DESC LIMIT 1";
-$stmt =$conn->prepare($query);
+$query= "SELECT * FROM reservation WHERE id=?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i",$id);
 $stmt->execute();
 $result= $stmt->get_result();
-$roow = $result->fetch_assoc();
+$rowid = $result->fetch_assoc();
 
 
 
@@ -16,7 +17,7 @@ $roow = $result->fetch_assoc();
 
 $query= "SELECT * FROM vols WHERE id=?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("i",$roow['vol_id']);
+$stmt->bind_param("i",$rowid['vol_id']);
 $stmt->execute();
 $result= $stmt->get_result();
 $row1 = $result->fetch_assoc();
@@ -26,7 +27,7 @@ $row1 = $result->fetch_assoc();
 
 $query= "SELECT * FROM passager WHERE id=?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("i",$roow['passager_id']);
+$stmt->bind_param("i",$rowid['passager_id']);
 $stmt->execute();
 $result= $stmt->get_result();
 $row2 = $result->fetch_assoc();

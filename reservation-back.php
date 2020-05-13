@@ -27,9 +27,11 @@ include('dbconnection.php');
 								$stmt = $conn->prepare("INSERT Into reservation (vol_id,passager_id,date_reservation) values(?,?,?)");
 								$stmt->bind_param("iis",$id,$latest_id,$date);
 								$stmt->execute();
+
+								$latest_id_reservation = $conn->insert_id;  
 								$stmt->close();
 								
-								header("Location: confirmation.php");
+								header("Location: confirmation.php?id=$latest_id_reservation");
 
 								}
 								
